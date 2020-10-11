@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
+import SignUpPage from '../../pages/SignupPage/SignupPage';
+// import LoginPage from '../../pages/LoginPage/LoginPage';
 
 const NavBar = (props) => {
   let nav = props.user ?
@@ -19,7 +21,12 @@ const NavBar = (props) => {
   return (
     <div className='NavBar'>
       {nav}
+      <div>
+        {/* <LoginPage /> */}
+        <SignUpPage />
+      </div>
     </div>
+    
   );
 };
 
