@@ -6,7 +6,7 @@ const technologiesCtrl = require('../../controllers/technologies');
 router.get('/', technologiesCtrl.index);
 router.get('/:id', technologiesCtrl.show);
 router.post('/', technologiesCtrl.create);
-// router.delete('/:id', technologiesCtrl.delete);
-// router.put('/:id', technologiesCtrl.update);
+router.delete('/:id', technologiesCtrl.deleteOne);
+router.put('/:id', technologiesCtrl.update);
 
 module.exports = router;

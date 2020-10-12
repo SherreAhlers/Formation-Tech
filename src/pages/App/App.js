@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch, Link, NavLink } from 'react-router-dom';
+// named exports attached to TechnologyAPI
 import * as technologyAPI from '../../utils/technologyService';
 import AddTechnologyPage from '../AddTechnologyPage/AddTechnologyPage';
+import EditTechnologyPage from '../EditTechnologyPage/EditTechnologyPage';
+import TechnologyDetailPage from '../TechnologyDetailPage/TechnologyDetailPage';
+//User sign in and login pages
 import TechnologyListPage from '../TechnologyListPage/TechnologyListPage';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -27,6 +31,30 @@ class App extends Component {
             () => this.props.history.push('/')
         );
     };
+
+    handleUpdateTechnology = async (updatedTechData) => {
+        const updatedTechnology = await technologyAPI.update(updatedTechData);
+        // Using map to replace just the puppy that was updated
+        const newTechnologiesArray = this.state.technologies.map((t) =>
+          t._id === updatedTechnology._id ? updatedTechnology : t
+        );
+        this.setState(
+          { technologies: newTechnologiesArray },
+          // This cb function runs after state is updated
+          () => this.props.history.push("/")
+        );
+      };
+    
+      handleDeleteTechnology = async (id) => {
+        await technologyAPI.deleteOne(id);
+        this.setState(
+          (state) => ({
+            // Yay, filter returns a NEW array
+            technologies: state.technologies.filter((t) => t._id !== id),
+          }),
+          () => this.props.history.push("/")
+        );
+      };
 
     /*---- User Auth ---*/
     handleSignupOrLogin = () => {
@@ -67,18 +95,18 @@ class App extends Component {
                     </NavLink>
                     &nbsp;&nbsp;&nbsp;
                     <Link to="" onClick = { this.handleLogout }>
-                    LOG OUT 
+                        LOG OUT 
                     </Link>  
                     &nbsp;&nbsp;&nbsp;
                     </>
                 ) : ( 
                     <>
                     <NavLink exact to="/login">
-                    LOG IN 
+                        LOG IN 
                     </NavLink>  
                     &nbsp;&nbsp;&nbsp; 
                     <NavLink exact to="/signup">
-                    SIGN UP 
+                        SIGN UP 
                     </NavLink>  
                     </>
                 )
@@ -96,6 +124,7 @@ class App extends Component {
                 <TechnologyListPage
                   user={this.state.user}
                   technologies={this.state.technologies}
+                  handleDeleteTechnology={this.handleDeleteTechnology}
                 />
               )}
             />
@@ -104,6 +133,21 @@ class App extends Component {
               path="/add"
               render={() => (
                 <AddTechnologyPage handleAddTechnology={this.handleAddTechnology} />
+              )}
+            />
+            <Route
+              exact
+              path="/details"
+              render={({ location }) => <TechnologyDetailPage location={location} />}
+            />
+            <Route
+              exact
+              path="/edit"
+              render={({ location }) => (
+                <EditTechnologyPage
+                  handleUpdateTechnology={this.handleUpdateTechnology}
+                  location={location}
+                />
               )}
             />
                 <Route exact path="/signup"

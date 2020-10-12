@@ -18,9 +18,24 @@ function TechnologyListItem({technology}) {
         >
           DETAILS
         </Link>
+        <Link
+          className='btn btn-xs btn-warning'
+          to={{
+            pathname: '/edit',
+            state: {technology}
+          }}
+        >
+          EDIT
+        </Link>
+        <button
+          className='btn btn-xs btn-danger margin-left-10'
+          onClick={() => handleDeleteTechnology(technology._id)}
+        >
+          DELETE
+        </button>
       </div>
     </div>
-  );}
-
+  );
+}
 
 export default TechnologyListItem;
