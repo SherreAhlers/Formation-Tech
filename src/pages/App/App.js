@@ -41,6 +41,7 @@ class App extends Component {
                     <Link to="" onClick = { this.handleLogout }>
                     LOG OUT 
                     </Link>  
+                    &nbsp;&nbsp;&nbsp;
                     </>
                 ) : ( 
                     <>
@@ -66,7 +67,8 @@ class App extends Component {
                 <Route exact path="/signup"
                 render = {
                     ({ history }) => ( 
-                        <SignupPage history={ history }
+                        <SignupPage 
+                        history={ history }
                         handleSignupOrLogin={ this.handleSignupOrLogin }
                         />
                     )
@@ -75,7 +77,8 @@ class App extends Component {
                 <Route exact path="/login"
                 render = {
                     ({ history }) => ( 
-                        <LoginPage history={ history }
+                        <LoginPage 
+                        history={ history }
                         handleSignupOrLogin={ this.handleSignupOrLogin }
                         />
                     )

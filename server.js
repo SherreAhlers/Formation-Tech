@@ -1,4 +1,4 @@
-// const cors = require('cors');
+const cors = require('cors');
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
@@ -8,7 +8,7 @@ require('./config/database');
 require('dotenv').config();
 
 // const technologiesRouter = require('./routes/api/technologies')
-const userRouter = require('./routes/api/users')
+const userRouter = require('./routes/api/users');
 
 const app = express();
 // app.use(cors());

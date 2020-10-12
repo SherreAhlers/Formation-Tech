@@ -45,7 +45,7 @@ class SignupPage extends Component {
     };
     this.setState({
       formData,
-      invalidForm: !this.formData.current.checkValidity(),
+      invalidForm: !this.formRef.current.checkValidity(),
     });
   };
 
@@ -63,7 +63,7 @@ class SignupPage extends Component {
           onSubmit={this.handleSubmit}
         >
           <div className="form-group">
-            <label>Your name (required)</label>
+            <label>Name (required)</label>
             <input
               className="form-control"
               name="name"
@@ -73,7 +73,7 @@ class SignupPage extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Your email (required)</label>
+            <label>Email (required)</label>
             <input
               className="form-control"
               name="email"
@@ -83,7 +83,7 @@ class SignupPage extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Your password</label>
+            <label>Password</label>
             <input
               type="password"
               className="form-control"
@@ -93,8 +93,9 @@ class SignupPage extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Formation (required)</label>
-            <input
+            <label>Formation (must be Eagle Ford, Permian, Appalacian, Bakken, Niobrara, Anadarko or Haynesville)</label>
+            <input 
+              // type="dropdown"
               className="form-control"
               name="formation"
               value={this.state.formData.formation}
@@ -124,6 +125,7 @@ class SignupPage extends Component {
             </div>
             <button
               className="btn"
+              type="submit"
               disabled={this.state.invalidForm}>
             SIGN UP
             </button>

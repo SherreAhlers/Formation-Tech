@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 mongoose.connect(
-    //   'mongodb://localhost:27017/puppies',
+      'mongodb://localhost:27017/technologies',
     {
         useNewUrlParser: true,
         useCreateIndex: true,
