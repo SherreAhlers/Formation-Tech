@@ -1,12 +1,53 @@
 import React, { Component } from 'react';
-import SignupForm from '../../components/SignupForm/SignupForm';
+import userService from '../../utils/userService';
 import './SignupPage.css';
 
 class SignupPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {message: ''}
-  }
+  state = {
+    invalidForm: true,
+    formData: {
+      name: "",
+      email: "",
+      password: "",
+      formation: "",
+      technologiesUsed: "",
+      company: "",
+      message: ""
+    }
+  };
+
+  formRef = React.createRef();
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await userService.signup({
+        name: this.state.formData.name,
+        email: this.state.formData.email,
+        password: this.state.formData.password,
+        formation: this.state.formData.formation,
+        technologiesUsed: this.state.formData.technologiesUsed,
+        company: this.state.formData.company
+      });
+
+      this.props.handleSignupOrLogin();
+
+      this.props.history.push('/');
+    } catch (err) {
+      this.updateMessage(err.message);
+    }
+  };
+
+  handleChange = (e) => {
+    const formData = {
+      ...this.state.formData,
+      [e.target.name]: e.target.value
+    };
+    this.setState({
+      formData,
+      invalidForm: !this.formData.current.checkValidity(),
+    });
+  };
 
   updateMessage = (msg) => {
     this.setState({message: msg});
@@ -14,10 +55,80 @@ class SignupPage extends Component {
 
   render() {
     return (
-      <div className='SignupPage'>
-        <SignupForm {...this.props} updateMessage={this.updateMessage} />
-        <p>{this.state.message}</p>
-      </div>
+      <>
+        <h1>Sign Up</h1>
+        <form
+          ref={this.formRef}
+          autoComplete="off"
+          onSubmit={this.handleSubmit}
+        >
+          <div className="form-group">
+            <label>Your name (required)</label>
+            <input
+              className="form-control"
+              name="name"
+              value={this.state.formData.name}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Your email (required)</label>
+            <input
+              className="form-control"
+              name="email"
+              value={this.state.formData.email}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Your password</label>
+            <input
+              type="password"
+              className="form-control"
+              name="password"
+              value={this.state.formData.password}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Formation (required)</label>
+            <input
+              className="form-control"
+              name="formation"
+              value={this.state.formData.formation}
+              onChange={this.handleChange}
+              required
+            />
+            </div>
+            <div className="form-group">
+            <label>Technologies Used (required)</label>
+            <input
+              className="form-control"
+              name="technologiesUsed"
+              value={this.state.formData.technologiesUsed}
+              onChange={this.handleChange}
+              required
+            />
+            </div>
+            <div className="form-group">
+            <label>Company</label>
+            <input
+              className="form-control"
+              name="company"
+              value={this.state.formData.company}
+              onChange={this.handleChange}
+              required
+            />
+            </div>
+            <button
+              className="btn"
+              disabled={this.state.invalidForm}>
+            SIGN UP
+            </button>
+        </form>
+      </>
     );
   }
 }

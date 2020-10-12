@@ -1,18 +1,19 @@
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
-// Export a middleware function
 module.exports = function(req, res, next) {
-    // Check for the token being sent in three different ways
-    let token = req.get('Authorization') || req.query.token;
+    let token = req.get('Authorization') || req.query.token || req.body.token;
     if (token) {
-        token = token.replace('Bearer ', '');
+        //remove the Bearer if it was included in the token header
+        token = token.replace('Bearer', '');
+        //Check if the token is valid and not expired
         jwt.verify(token, SECRET, function(err, decoded) {
             if (err) {
-                return next(err);
+                next(err);
             } else {
+                //token is valid, add user to req object
                 req.user = decoded.user;
-                return next();
+                next();
             }
         });
     } else {

@@ -3,11 +3,19 @@
 }
 
 .App-header {
-    background-color: #222;
-    height: 50px;
-    padding: 20px;
-    padding-bottom: 5px;
-    color: white;
-    font-size: 30px;
+    background-color: lightblue;
+    height: 75px;
+    margin-bottom: 30px;
+    color: black;
+    font-size: 40px;
     text-align: center;
+    justify-content: center;
 }
+
+nav {
+    background-color: silver;
+    height: 40px;
+    font-size: 20px;
+}
+
+

@@ -1,7 +1,10 @@
-/* .SignupPage {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
-} */
+a:hover {
+    color: var(--black);
+    background-color: var(--accent);
+  }
+  
+  a.active {
+    color: var(--background);
+    background-color: var(--black);
+    cursor: default;
+  }

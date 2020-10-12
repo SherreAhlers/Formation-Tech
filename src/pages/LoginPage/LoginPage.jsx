@@ -1,60 +1,85 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './LoginPage.css';
 import userService from '../../utils/userService';
 
 class LoginPage extends Component {
   
   state = {
-    email: '',
-    pw: ''
+    invalidForm: true,
+    formData: {
+      email: '',
+      password: '',
+      message: ''
+    },
   };
 
-  handleChange = (e) => {
-    // Implement in an elegant way
-    this.setState({
-      // Using Computed Property Names
-      [e.target.name]: e.target.value
-    });
-  }
+  formRef = React.createRef();
 
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await userService.login(this.state);
+      await userService.login(this.state.formData);
+
       this.props.handleSignupOrLogin();
-      // Successfully signed up - show GamePage
       this.props.history.push('/');
     } catch (err) {
-      // Do not alert in your projects,
-      // show a modal or some UI instead
-      alert('Invalid login');
+      this.updateMessage(err.message)
     }
+  };
+
+  handleChange = (e) => {
+    const formData = {
+      ...this.state.formData,
+      [e.target.name]: e.target.value,
+    };
+    this.setState({
+      formData,
+      invalidForm: !this.formRef.current.checkValidity(),
+    });
+  };
+
+  updateMessage = (msg) => {
+    this.setState({message: msg});
   }
 
   render() {
     return (
-      <div className="LoginPage">
-        <header className="header-footer">Log In</header>
-        <form className="form-horizontal" onSubmit={this.handleSubmit} >
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input type="email" className="form-control" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input type="password" className="form-control" placeholder="Password" value={this.state.pw} name="pw" onChange={this.handleChange} />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12 text-center">
-              <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
-              <Link to='/'>Cancel</Link>
-            </div>
-          </div>
-        </form>
-      </div>
+      <>
+      <h1>Log In</h1>
+      <form
+        ref={this.formRef}
+        autoComplete="off"
+        onSubmit={this.handleSubmit}
+      >
+        <div className="form-group">
+          <label>Your email (required)</label>
+          <input
+            className="form-control"
+            name="email"
+            value={this.state.formData.email}
+            onChange={this.handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Your password</label>
+          <input
+            type="password"
+            className="form-control"
+            name="password"
+            value={this.state.formData.password}
+            onChange={this.handleChange}
+          />
+        </div>
+        <button
+          type="submit"
+          className="btn"
+          disabled={this.state.invalidForm}
+        >
+          LOG IN
+        </button>
+      </form>
+    </>
     );
   }
 }

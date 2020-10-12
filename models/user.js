@@ -4,7 +4,9 @@ const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
 
-const userSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, lowercase: true, unique: true },
     password: String,
@@ -19,6 +21,14 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 });
 
+userSchema.set('toJSON', {
+    transform: function(doc, ret) {
+        // remove the password property when serializing doc to JSON
+        delete ret.password;
+        return ret;
+    }
+});
+
 userSchema.pre('save', function(next) {
     // Mongoose binds 'this' to be the doc
     const user = this;
@@ -29,22 +39,18 @@ userSchema.pre('save', function(next) {
         function(err, hash) {
             if (err) return next(err);
             user.password = hash;
-            return next();
+            next();
         }
     );
 });
 
 userSchema.methods.comparePassword = function(tryPassword, cb) {
-    // 'this' is the user doc
-    bcrypt.compare(tryPassword, this.password, cb);
+    //'this' represents the document that you called comparePassword on
+    bcrypt.compare(tryPassword, this.password, function(err, isMatch) {
+        if (err) return cb(err);
+        cb(null, isMatch);
+    });
 };
 
-userSchema.set('toJSON', {
-    transform: function(doc, ret) {
-        // remove the password property when serializing doc to JSON
-        delete ret.password;
-        return ret;
-    }
-});
 
 module.exports = mongoose.model('User', userSchema);
