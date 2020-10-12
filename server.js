@@ -7,8 +7,8 @@ const favicon = require('serve-favicon');
 require('./config/database');
 require('dotenv').config();
 
-// const technologiesRouter = require('./routes/api/technologies')
-const userRouter = require('./routes/api/users');
+const technologiesRouter = require('./routes/api/technologies')
+const usersRouter = require('./routes/api/users');
 
 const app = express();
 // app.use(cors());
@@ -18,8 +18,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'build')));
 
 // Put API routes here, before the "catch all" route
-// app.use('/api/technologies', technologiesRouter);
-app.use('/api/users', userRouter);
+app.use('/api/technologies', technologiesRouter);
+app.use('/api/users', usersRouter);
 
 // Catch all route
 app.get('/*', function(req, res) {

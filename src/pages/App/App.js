@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch, Link, NavLink } from 'react-router-dom';
+import * as technologyAPI from '../../utils/technologyService';
+import AddTechnologyPage from '../AddTechnologyPage/AddTechnologyPage';
+import TechnologyListPage from '../TechnologyListPage/TechnologyListPage';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
@@ -9,8 +12,20 @@ import '../SignupPage/SignupPage.css'
 
 class App extends Component {
     state = {
+        technologies: [],
         user: userService.getUser()
 
+    };
+
+    /*--- Technology CRUD ---*/
+    handleAddTechnology = async (newTechData) => {
+        const newTech = await technologyAPI.create(newTechData);
+        this.setState(
+            (state) => ({
+                technologies: [...state.technologies, newTech]
+            }),
+            () => this.props.history.push('/')
+        );
     };
 
     /*---- User Auth ---*/
@@ -22,6 +37,11 @@ class App extends Component {
     };
 
     /*---- Lifecycle Methods ----*/
+    async componentDidMount() {
+        const technologies = await technologyAPI.getAll();
+        this.setState({ technologies });
+    }
+
     handleLogout = () => {
         userService.logout();
         this.setState({ user: null });
@@ -38,6 +58,14 @@ class App extends Component {
             <nav> 
                 {this.state.user ? ( 
                     <>
+                    <NavLink exact to="/">
+                        TECHNOLOGIES LIST
+                    </NavLink>
+                    &nbsp;&nbsp;&nbsp;
+                    <NavLink exact to="/add">
+                        ADD TECHNOLOGY
+                    </NavLink>
+                    &nbsp;&nbsp;&nbsp;
                     <Link to="" onClick = { this.handleLogout }>
                     LOG OUT 
                     </Link>  
@@ -59,11 +87,25 @@ class App extends Component {
             </header> 
             <main> 
                 {this.state.user ?
-                <h2>Welcome, { this.state.user.name }</h2> 
-                :  
-                <h2>You are not logged in ! </h2>
-                }  
+                <h2>Welcome, { this.state.user.name }</h2> : <h2>You are not logged in ! </h2>}  
                 <Switch>
+                <Route
+              exact
+              path="/"
+              render={() => (
+                <TechnologyListPage
+                  user={this.state.user}
+                  technologies={this.state.technologies}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/add"
+              render={() => (
+                <AddTechnologyPage handleAddTechnology={this.handleAddTechnology} />
+              )}
+            />
                 <Route exact path="/signup"
                 render = {
                     ({ history }) => ( 
