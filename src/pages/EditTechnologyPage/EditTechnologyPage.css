@@ -1,0 +1,29 @@
+#edit-form {
+    display: inline-block;    
+    justify-content: center;
+    align-items: center;
+    border-style: groove;
+    background-color: lightblue;
+    width: 500px;
+}
+
+#infoURL {
+
+}
+
+#image {
+
+}
+
+#description {
+
+}
+
+#technology {
+
+}
+
+#save-button {
+    background-color: silver;
+    color: darkblue;
+}

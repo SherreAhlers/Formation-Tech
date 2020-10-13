@@ -1,0 +1,12 @@
+.card {
+    font-size: 20px;
+}
+
+.details-page {
+    margin-top: 50px;
+    padding: 10px;
+}
+
+#detail {
+    background-color: darkblue;
+}

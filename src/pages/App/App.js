@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch, Link, NavLink } from 'react-router-dom';
+import { Route, Switch, Link, NavLink, Redirect } from 'react-router-dom';
 // named exports attached to TechnologyAPI
 import * as technologyAPI from '../../utils/technologyService';
 import AddTechnologyPage from '../AddTechnologyPage/AddTechnologyPage';
@@ -11,6 +11,7 @@ import TechnologyListPage from '../TechnologyListPage/TechnologyListPage';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
+import '../../utils/tokenService';
 import '../../index.css'
 import '../SignupPage/SignupPage.css'
 
@@ -23,6 +24,7 @@ class App extends Component {
 
     /*--- Technology CRUD ---*/
     handleAddTechnology = async (newTechData) => {
+      console.log("hitting handle add tech", newTechData)
         const newTech = await technologyAPI.create(newTechData);
         this.setState(
             (state) => ({
@@ -66,8 +68,9 @@ class App extends Component {
 
     /*---- Lifecycle Methods ----*/
     async componentDidMount() {
-        const technologies = await technologyAPI.getAll();
-        this.setState({ technologies });
+      const technologies = await technologyAPI.getAll();
+      this.setState({ technologies });
+      console.log("hitting the spot I just logged", technologies)
     }
 
     handleLogout = () => {
@@ -112,7 +115,8 @@ class App extends Component {
                 )
             } 
             </nav>  
-            </header> 
+            </header>
+            <body>
             <main> 
                 {this.state.user ?
                 <h2>Welcome, { this.state.user.name }</h2> : <h2>You are not logged in ! </h2>}  
@@ -132,22 +136,31 @@ class App extends Component {
               exact
               path="/add"
               render={() => (
+                userService.getUser() ?
                 <AddTechnologyPage handleAddTechnology={this.handleAddTechnology} />
+                :
+                <Redirect to="/login" />
               )}
             />
             <Route
               exact
               path="/details"
-              render={({ location }) => <TechnologyDetailPage location={location} />}
-            />
+              render={({ location }) => 
+              userService.getUser() ?
+              <TechnologyDetailPage location={location} />
+              :
+                <Redirect to="/login" />
+              }/>
             <Route
               exact
               path="/edit"
               render={({ location }) => (
+                userService.getUser() ?
                 <EditTechnologyPage
                   handleUpdateTechnology={this.handleUpdateTechnology}
                   location={location}
-                />
+                /> :
+                <Redirect to="/login" />
               )}
             />
                 <Route exact path="/signup"
@@ -171,7 +184,9 @@ class App extends Component {
                 }
                 />  
                 </Switch> 
-                </main>  
+                <p className="landing-page" id="welcome">Welcome to Formation-Tech! This app is designed to help people looking for infomation about water technologies used in different formations around the U.S. Here you can post technologies you have used and read up on other technologies other people have used.</p>
+                </main> 
+                </body>
                 </div>
             );
         }

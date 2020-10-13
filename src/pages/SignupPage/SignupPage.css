@@ -1,10 +1,11 @@
-a:hover {
-    color: var(--black);
-    background-color: var(--accent);
-  }
-  
-  a.active {
-    color: var(--background);
-    background-color: var(--black);
-    cursor: default;
-  }
+.form-control {
+  background-color: white;
+}
+
+#signup-form {
+  color: darkblue;
+  border-style: groove;
+  background-color: lightblue;
+  width: 400px;
+  margin-left: 160px;
+}

@@ -6,12 +6,6 @@ import App from './pages/App/App';
 import * as serviceWorker from './serviceWorker';
 
 
-
-// ReactDOM.render( <
-//     Router > < Route component = { App }
-//     /></Router > ,
-//     document.getElementById('root')
-// );
 ReactDOM.render( 
         <Router>
             <Route render= {({ history }) => <App history= { history } /> } />

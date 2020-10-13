@@ -1,0 +1,29 @@
+#add-form {
+    display: inline-block;    
+    justify-content: center;
+    align-items: center;
+    border-style: groove;
+    background-color: lightblue;
+    width: 500px;
+}
+
+#add-name {
+
+}
+
+#add-description {
+
+}
+
+#add-image {
+
+}
+
+#add-url {
+
+}
+
+#add-button {
+    background-color: silver;
+    color: darkblue;
+}

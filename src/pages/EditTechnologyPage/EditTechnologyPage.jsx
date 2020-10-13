@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import '../EditTechnologyPage/EditTechnologyPage.css';
+
+
 
 class EditTechnologyPage extends Component {
   state = {
@@ -25,9 +28,10 @@ class EditTechnologyPage extends Component {
   render() {
     return (
       <>
+      <div className="edit" id="edit-form">
         <h1>Edit Technology</h1>
         <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
-          <div className="form-group">
+          <div className="form-group" id="technology">
             <label>Technology Name (required)</label>
             <input
               className="form-control"
@@ -37,7 +41,7 @@ class EditTechnologyPage extends Component {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group" id="description">
             <label>Description (required)</label>
             <input
               className="form-control"
@@ -47,7 +51,7 @@ class EditTechnologyPage extends Component {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group" id="image">
             <label>Image</label>
             <input
               className="form-control"
@@ -57,7 +61,7 @@ class EditTechnologyPage extends Component {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group" id="infoURL">
             <label>Information URL</label>
             <input
               className="form-control"
@@ -70,12 +74,14 @@ class EditTechnologyPage extends Component {
           <button
             type="submit"
             className="btn btn-xs"
+            id="save-button"
             disabled={this.state.invalidForm}
           >
             SAVE TECHNOLOGY
           </button>&nbsp;&nbsp;
           <Link to='/'>CANCEL</Link>
         </form>
+        </div>
       </>
     );
   }

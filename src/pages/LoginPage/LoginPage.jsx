@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './LoginPage.css';
 import userService from '../../utils/userService';
+import '../LoginPage/LoginPage.css';
+
 
 class LoginPage extends Component {
   
@@ -45,28 +47,31 @@ class LoginPage extends Component {
   render() {
     return (
       <>
-      <h1>Log In</h1>
+      <div className="login-form">
+      <h1 className="login-title">Log In</h1>
       <form
         ref={this.formRef}
         autoComplete="off"
         onSubmit={this.handleSubmit}
       >
-        <div className="form-group">
-          <label>Email (required)</label>
+        <div className="form-group" id="login-page-email">
+          <label>Email</label>
           <input
             className="form-control"
             name="email"
+            placeholder="name@example.com"
             value={this.state.formData.email}
             onChange={this.handleChange}
             required
           />
         </div>
-        <div className="form-group">
+        <div className="form-group" id="login-page-password">
           <label>Password</label>
           <input
             type="password"
             className="form-control"
             name="password"
+            placeholder="password"
             value={this.state.formData.password}
             onChange={this.handleChange}
           />
@@ -74,11 +79,13 @@ class LoginPage extends Component {
         <button
           type="submit"
           className="btn"
+          id="login-button"
           disabled={this.state.invalidForm}
         >
           LOG IN
         </button>
       </form>
+      </div>
     </>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import userService from '../../utils/userService';
+import {Link} from 'react-router-dom';
 import './SignupPage.css';
 
 class SignupPage extends Component {
@@ -62,27 +63,30 @@ class SignupPage extends Component {
           autoComplete="off"
           onSubmit={this.handleSubmit}
         >
+          <div classname="signup" id="signup-form">
           <div className="form-group">
             <label>Name (required)</label>
             <input
-              className="form-control"
+              className="form-control" id="name"
               name="name"
               value={this.state.formData.name}
               onChange={this.handleChange}
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group" id="email">
             <label>Email (required)</label>
             <input
               className="form-control"
+              type="email"
               name="email"
+              placeholder="name@example.com"
               value={this.state.formData.email}
               onChange={this.handleChange}
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group" id="password">
             <label>Password</label>
             <input
               type="password"
@@ -92,20 +96,26 @@ class SignupPage extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="form-group">
-            <label>Formation (must be Eagle Ford, Permian, Appalacian, Bakken, Niobrara, Anadarko or Haynesville)</label>
-            <input 
-              // type="dropdown"
+          <div className="form-group" id="formation">
+            <label>Formation (required)</label>
+            <select
               className="form-control"
               name="formation"
               value={this.state.formData.formation}
               onChange={this.handleChange}
-              required
-            />
+              required>
+              <option>Anadarko</option>
+              <option>Appalacian</option>
+              <option>Bakken</option>
+              <option>Eagle Ford</option>
+              <option>Haynesville</option>
+              <option>Niobrara</option>
+              <option>Permian</option>
+            </select>
             </div>
-            <div className="form-group">
+            <div className="form-group" id="technologiesUsed">
             <label>Technologies Used (required)</label>
-            <input
+            <textarea
               className="form-control"
               name="technologiesUsed"
               value={this.state.formData.technologiesUsed}
@@ -113,7 +123,7 @@ class SignupPage extends Component {
               required
             />
             </div>
-            <div className="form-group">
+            <div className="form-group" id="company">
             <label>Company</label>
             <input
               className="form-control"
@@ -128,7 +138,10 @@ class SignupPage extends Component {
               type="submit"
               disabled={this.state.invalidForm}>
             SIGN UP
+            &nbsp;&nbsp;&nbsp;
+            <Link to='/login'>LOGIN</Link>
             </button>
+        </div>
         </form>
       </>
     );

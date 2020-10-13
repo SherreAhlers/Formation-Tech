@@ -1,0 +1,24 @@
+.panel-title {
+    font-size: 30px;
+}
+
+#delete {
+    margin: 10px;
+    padding: 10px;
+    color: blue;
+    background-color: lightblue;
+}
+
+#edit {
+    margin: 10px;
+    padding: 10px;
+    color: blue;
+    background-color: lightblue;
+}
+
+#details {
+    margin: 10px;
+    padding: 10px;
+    color: blue;
+    background-color: lightblue;
+}

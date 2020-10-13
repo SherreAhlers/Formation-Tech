@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import '../AddTechnologyPage/AddTechnologyPage.css';
+
 
 class AddTechnologyPage extends Component {
   state = {
@@ -29,9 +31,10 @@ class AddTechnologyPage extends Component {
   render() {
     return (
       <>
+      <div className="add" id="add-form">
         <h1>Add Technology</h1>
         <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
-          <div className="form-group">
+          <div className="form-group" id="add-name">
             <label>Technology Name (required)</label>
             <input
               className="form-control"
@@ -41,7 +44,7 @@ class AddTechnologyPage extends Component {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group" id="add-description">
             <label>Technology Description (required)</label>
             <input
               className="form-control"
@@ -51,7 +54,7 @@ class AddTechnologyPage extends Component {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group" id="add-image">
             <label>Image</label>
             <input
               className="form-control"
@@ -60,7 +63,7 @@ class AddTechnologyPage extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group" id="add-url">
             <label>Resource URL</label>
             <input
               className="form-control"
@@ -72,11 +75,13 @@ class AddTechnologyPage extends Component {
           <button
             type="submit"
             className="btn"
+            id="add-button"
             disabled={this.state.invalidForm}
           >
             ADD Technology
           </button>
         </form>
+        </div>
       </>
     );
   }

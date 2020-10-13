@@ -5,3 +5,28 @@
     align-items: center;
     margin-bottom: 50px;
 }
+
+.login-title {
+    padding: 5px;
+}
+
+#login-page-email {
+
+}
+
+#login-page-password {
+
+}
+
+#login-button {
+    color: blue;
+    background-color: silver;
+}
+
+.login-form {
+    margin-top: 100px;
+    border-style: groove;
+    width: 300px;
+    margin-left: 210px;
+    background-color: lightblue;
+}

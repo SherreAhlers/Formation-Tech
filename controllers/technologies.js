@@ -19,6 +19,7 @@ async function show(req, res) {
   }
   
   async function create(req, res) {
+    req.body.owner = req.user._id
     const technology = await Technology.create(req.body);
     res.status(201).json(technology);
   }

@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import '../TechnologyCard/TechnologyCard.css';
+
 
 function TechnologyCard({technology}) { 
   return (
@@ -9,12 +11,11 @@ function TechnologyCard({technology}) {
       </div>
       <div className='panel-body'>
         <dl>
-          <dt>Description</dt>
+          <dt id="detail-description">Description</dt>
           <dd>{technology.description}</dd>
-          <dt>Owner</dt>
-          <dd>{technology.owner}</dd>
-          <dt>Image</dt>
+          <dt id="detail-img">Image</dt>
           <dd>{technology.image}</dd>
+          <dt id="detail-infoURL">Information URL</dt>
           <dd>{technology.infoURL}</dd>
         </dl>
       </div>

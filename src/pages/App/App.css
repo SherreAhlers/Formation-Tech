@@ -13,9 +13,21 @@
 }
 
 nav {
-    background-color: silver;
-    height: 40px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
+#welcome {
+    margin-top: 100px;
+    font-size: 30px;
+    font-weight: 700;
+    color: yellow;
+}
 
+body {
+    background: url('https://i.imgur.com/pjDtLCj.jpg');
+    min-height: 400px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
