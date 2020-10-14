@@ -13,7 +13,7 @@ function signup(user) {
         })
         .then((res) => {
             console.log('hitting sign up response', res)
-            if (res.ok) res.json();
+            if (res.ok) return res.json();
             throw new Error('Email already taken!');
         })
         //Parameter destructuring!
