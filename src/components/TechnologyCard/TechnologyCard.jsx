@@ -22,7 +22,7 @@ function TechnologyCard({technology}) {
       <div className='panel-footer'>
         <Link to='/'>RETURN TO LIST</Link>
       </div>
-    </div>
+    </div> 
   );
 }
 

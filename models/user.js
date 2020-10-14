@@ -12,7 +12,7 @@ const userSchema = new Schema({
     password: String,
     formation: {
         type: String,
-        enum: ['Eagle Ford', 'Permian', 'Anadarko', 'Niobrara', 'Bakken', 'Appalachia'],
+        enum: ['Eagle Ford', 'Permian', 'Anadarko', 'Niobrara', 'Bakken', 'Appalachia', 'Haynesville'],
         required: true
     },
     technologiesUsed: { type: String, required: true },

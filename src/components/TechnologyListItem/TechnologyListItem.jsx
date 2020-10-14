@@ -20,7 +20,7 @@ function TechnologyListItem({technology, handleDeleteTechnology}) {
           }}
         >
           DETAILS
-        </Link>
+        </Link> 
         <Link
           className='btn btn-md' id="edit"
           to={{

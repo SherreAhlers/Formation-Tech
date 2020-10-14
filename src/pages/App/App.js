@@ -64,18 +64,22 @@ class App extends Component {
             user: userService.getUser(),
         });
         console.log(this.state.user);
+        this.componentDidMount();
     };
 
     /*---- Lifecycle Methods ----*/
     async componentDidMount() {
-      const technologies = await technologyAPI.getAll();
-      this.setState({ technologies });
-      console.log("hitting the spot I just logged", technologies)
+      if (this.state.user) {
+        const technologies = await technologyAPI.getAll();
+        this.setState({ technologies });
+        console.log("hitting the spot I just logged", technologies)
+      }
     }
 
     handleLogout = () => {
         userService.logout();
         this.setState({ user: null });
+        this.componentDidMount();
     };
 
     /*---- Callback Methods  ---*/
@@ -116,7 +120,6 @@ class App extends Component {
             } 
             </nav>  
             </header>
-            <body>
             <main> 
                 {this.state.user ?
                 <h2>Welcome, { this.state.user.name }</h2> : <h2>You are not logged in ! </h2>}  
@@ -186,7 +189,6 @@ class App extends Component {
                 </Switch> 
                 <p className="landing-page" id="welcome">Welcome to Formation-Tech! This app is designed to help people looking for infomation about water technologies used in different formations around the U.S. Here you can post technologies you have used and read up on other technologies other people have used.</p>
                 </main> 
-                </body>
                 </div>
             );
         }

@@ -12,8 +12,8 @@ function TechnologyListPage(props) {
         <>
         <h1>Technology List</h1>
         <div className="TechnologyListPage">
-        <div class="container">
-          <div class="card">
+        <div className="container">
+          <div className="card">
           {props.technologies.map(technology => 
             <TechnologyListItem
               owner={technology.owner}

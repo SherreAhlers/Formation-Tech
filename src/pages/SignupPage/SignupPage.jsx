@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import userService from '../../utils/userService';
-import {Link} from 'react-router-dom';
 import './SignupPage.css';
 
 class SignupPage extends Component {
@@ -22,6 +21,7 @@ class SignupPage extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log('about to sign up')
       await userService.signup({
         name: this.state.formData.name,
         email: this.state.formData.email,
@@ -30,9 +30,9 @@ class SignupPage extends Component {
         technologiesUsed: this.state.formData.technologiesUsed,
         company: this.state.formData.company
       });
-
+      console.log('sign up done')
       this.props.handleSignupOrLogin();
-
+      console.log('need to redirect here')
       this.props.history.push('/');
     } catch (err) {
       this.updateMessage(err.message);
@@ -63,7 +63,7 @@ class SignupPage extends Component {
           autoComplete="off"
           onSubmit={this.handleSubmit}
         >
-          <div classname="signup" id="signup-form">
+          <div className="signup" id="signup-form">
           <div className="form-group">
             <label>Name (required)</label>
             <input
@@ -89,7 +89,7 @@ class SignupPage extends Component {
           <div className="form-group" id="password">
             <label>Password</label>
             <input
-              type="password"
+              type="current-password"
               className="form-control"
               name="password"
               value={this.state.formData.password}
@@ -105,7 +105,7 @@ class SignupPage extends Component {
               onChange={this.handleChange}
               required>
               <option>Anadarko</option>
-              <option>Appalacian</option>
+              <option>Appalachia</option>
               <option>Bakken</option>
               <option>Eagle Ford</option>
               <option>Haynesville</option>
@@ -139,7 +139,6 @@ class SignupPage extends Component {
               disabled={this.state.invalidForm}>
             SIGN UP
             &nbsp;&nbsp;&nbsp;
-            <Link to='/login'>LOGIN</Link>
             </button>
         </div>
         </form>
