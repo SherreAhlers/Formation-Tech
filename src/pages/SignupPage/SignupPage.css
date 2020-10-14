@@ -1,11 +1,9 @@
-.form-control {
-  background-color: white;
-}
-
 #signup-form {
-  color: darkblue;
+  display: inline-block;    
+  justify-content: center;
+  align-items: center;
   border-style: groove;
   background-color: lightblue;
   width: 400px;
-  margin-left: 160px;
+  color: darkblue;
 }

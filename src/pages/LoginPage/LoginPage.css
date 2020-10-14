@@ -24,9 +24,10 @@
 }
 
 .login-form {
-    margin-top: 100px;
+    display: inline-block;    
+    justify-content: center;
+    align-items: center;
     border-style: groove;
-    width: 300px;
-    margin-left: 210px;
     background-color: lightblue;
+    width: 300px;
 }

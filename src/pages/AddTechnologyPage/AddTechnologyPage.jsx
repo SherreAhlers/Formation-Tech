@@ -31,8 +31,8 @@ class AddTechnologyPage extends Component {
   render() {
     return (
       <>
+      <h1>Add Technology</h1>
       <div className="add" id="add-form">
-        <h1>Add Technology</h1>
         <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="form-group" id="add-name">
             <label>Technology Name (required)</label>

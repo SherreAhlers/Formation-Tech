@@ -28,8 +28,8 @@ class EditTechnologyPage extends Component {
   render() {
     return (
       <>
+      <h1>Edit Technology</h1>
       <div className="edit" id="edit-form">
-        <h1>Edit Technology</h1>
         <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="form-group" id="technology">
             <label>Technology Name (required)</label>

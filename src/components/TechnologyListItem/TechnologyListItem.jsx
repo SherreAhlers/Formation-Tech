@@ -13,15 +13,6 @@ function TechnologyListItem({technology, handleDeleteTechnology}) {
       </div>
       <div className='panel-footer TechnologyListItem-action-panel'>
       <Link
-          className='btn btn-md' id="details"
-          to={{
-            pathname: '/details',
-            state: {technology}
-          }}
-        >
-          DETAILS
-        </Link> 
-        <Link
           className='btn btn-md' id="edit"
           to={{
             pathname: '/edit',
@@ -30,6 +21,15 @@ function TechnologyListItem({technology, handleDeleteTechnology}) {
         >
           EDIT
         </Link>
+      <Link
+          className='btn btn-md' id="details"
+          to={{
+            pathname: '/details',
+            state: {technology}
+          }}
+        >
+          DETAILS
+        </Link> 
         <button
           className='btn btn-md' id="delete"
           onClick={() => handleDeleteTechnology(technology._id)}

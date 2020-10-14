@@ -47,8 +47,8 @@ class LoginPage extends Component {
   render() {
     return (
       <>
-      <div className="login-form">
       <h1 className="login-title">Log In</h1>
+      <div className="login-form">
       <form
         ref={this.formRef}
         autoComplete="off"
