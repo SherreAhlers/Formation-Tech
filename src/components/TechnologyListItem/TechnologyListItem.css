@@ -23,5 +23,9 @@
     background-color: lightblue;
 }
 
-.panel {
+#comments-button {
+    margin: 10px;
+    padding: 10px;
+    color: blue;
+    background-color: lightblue;
 }

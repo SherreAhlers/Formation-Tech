@@ -3,6 +3,7 @@ import TechnologyCard from '../../components/TechnologyCard/TechnologyCard';
 import '../TechnologyDetailPage/TechnologyDetailPage.css';
 
 
+
 function TechnologyDetailPage(props) {
   // Refer to PuppyListItem to see how puppy is being passed via the <Link>
   const technology = props.location.state.technology;
@@ -19,4 +20,4 @@ function TechnologyDetailPage(props) {
   );
 }
 
-export default TechnologyDetailPage;
+export default TechnologyDetailPage;  

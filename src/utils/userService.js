@@ -12,13 +12,11 @@ function signup(user) {
             body: JSON.stringify(user),
         })
         .then((res) => {
-            console.log('hitting sign up response', res)
             if (res.ok) return res.json();
             throw new Error('Email already taken!');
         })
         //Parameter destructuring!
         .then(({ token }) => {
-            console.log('we are displaying token', token);
             tokenService.setToken(token);
         })
     );

@@ -11,7 +11,6 @@ export function getAll() {
 }
 
 export function create(tech) {
-  console.log("hitting service create function", tech)
     return fetch(BASE_URL, {
       method: 'POST',
       headers: {

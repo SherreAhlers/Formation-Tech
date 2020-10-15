@@ -17,6 +17,7 @@ function TechnologyCard({technology}) {
           <dd>{technology.image}</dd>
           <dt id="detail-infoURL">Information URL</dt>
           <dd>{technology.infoURL}</dd>
+          <dd>{technology.comments}</dd>
         </dl>
       </div>
       <div className='panel-footer'>

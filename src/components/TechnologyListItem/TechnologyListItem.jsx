@@ -17,7 +17,7 @@ function TechnologyListItem({technology, handleDeleteTechnology}) {
           to={{
             pathname: '/edit',
             state: {technology}
-          }}
+          }} 
         >
           EDIT
         </Link>
@@ -29,6 +29,15 @@ function TechnologyListItem({technology, handleDeleteTechnology}) {
           }}
         >
           DETAILS
+        </Link> 
+        <Link
+          className='btn btn-md' id="comments-button"
+          to={{
+            pathname: '/comments',
+            state: {technology}
+          }}
+        >
+          COMMENTS
         </Link> 
         <button
           className='btn btn-md' id="delete"

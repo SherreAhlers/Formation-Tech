@@ -14,14 +14,14 @@ function TechnologyListPage(props) {
         <div className="TechnologyListPage">
         <div className="container">
           <div className="card">
-          {props.technologies.map(technology => 
+          {props.technologies ? props.technologies.map(technology => 
             <TechnologyListItem
               owner={technology.owner}
               technology={technology}
               handleDeleteTechnology={props.handleDeleteTechnology}
               key={technology._id}
             />
-          )}
+            ) : ''} 
           </div>
           </div>
           </div>

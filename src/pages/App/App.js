@@ -3,28 +3,31 @@ import './App.css';
 import { Route, Switch, Link, NavLink, Redirect } from 'react-router-dom';
 // named exports attached to TechnologyAPI
 import * as technologyAPI from '../../utils/technologyService';
+import * as commentAPI from '../../utils/commentService';
 import AddTechnologyPage from '../AddTechnologyPage/AddTechnologyPage';
 import EditTechnologyPage from '../EditTechnologyPage/EditTechnologyPage';
 import TechnologyDetailPage from '../TechnologyDetailPage/TechnologyDetailPage';
-//User sign in and login pages
 import TechnologyListPage from '../TechnologyListPage/TechnologyListPage';
+import TechnologyCommentPage from '../TechnologyCommentPage/TechnologyCommentPage';
+//User sign in and login pages
 import SignupPage from '../SignupPage/SignupPage';
+import '../SignupPage/SignupPage.css'
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
 import '../../utils/tokenService';
 import '../../index.css'
-import '../SignupPage/SignupPage.css'
+
 
 class App extends Component {
     state = {
         technologies: [],
+        comments: [],
         user: userService.getUser()
 
     };
 
     /*--- Technology CRUD ---*/
     handleAddTechnology = async (newTechData) => {
-      console.log("hitting handle add tech", newTechData)
         const newTech = await technologyAPI.create(newTechData);
         this.setState(
             (state) => ({
@@ -58,12 +61,22 @@ class App extends Component {
         );
       };
 
+      handleAddComment = async (newData, techId) => {
+          const newComment = await commentAPI.create(newData, techId);
+          console.log('hitting in handleAddComment', newComment)
+          this.setState(
+              (state) => ({
+                  comments: [...state.comments, newComment]
+              }),
+              () => this.props.history.push('/')
+          );
+      };
+
     /*---- User Auth ---*/
     handleSignupOrLogin = () => {
         this.setState({
             user: userService.getUser(),
         });
-        console.log(this.state.user);
         this.componentDidMount();
     };
 
@@ -72,9 +85,9 @@ class App extends Component {
       if (this.state.user) {
         const technologies = await technologyAPI.getAll();
         this.setState({ technologies });
-        console.log("hitting the spot I just logged", technologies)
       }
     }
+
 
     handleLogout = () => {
         userService.logout();
@@ -131,6 +144,7 @@ class App extends Component {
                 <TechnologyListPage
                   user={this.state.user}
                   technologies={this.state.technologies}
+                  comments={this.state.comments}
                   handleDeleteTechnology={this.handleDeleteTechnology}
                 />
               )}
@@ -154,15 +168,36 @@ class App extends Component {
               :
                 <Redirect to="/login" />
               }/>
-            <Route
+              <Route
+              exact
+              path="/comments"
+              render={({ location }) =>
+              userService.getUser() ?
+              <TechnologyCommentPage 
+              location={location} 
+              handleAddComment={this.handleAddComment} 
+              />
+              :
+              <Redirect to="/login" />
+              }/>
+              {/* <Route
+              exact
+              path="/comments-add"
+              render={({ location }) =>
+              userService.getUser() ?
+              <AddCommentPage location={location} handleAddComment={this.handleAddComment} />
+              :
+              <Redirect to="/login" />
+              }/> */}
+              <Route
               exact
               path="/edit"
               render={({ location }) => (
                 userService.getUser() ?
                 <EditTechnologyPage
                   handleUpdateTechnology={this.handleUpdateTechnology}
-                  location={location}
-                /> :
+                  location={location} /> 
+                :
                 <Redirect to="/login" />
               )}
             />

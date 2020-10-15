@@ -9,13 +9,11 @@ module.exports = {
 };
 
 async function signup(req, res) {
-    console.log('hitting sign up', req.body)
     const user = new User(req.body);
     try {
         await user.save();
         // TODO: Send back a JWT instead of the user
         const token = createJWT(user);
-        console.log('sign up function user token', user, token)
         res.json({ token });
     } catch (err) {
         // Probably a duplicate email

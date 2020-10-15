@@ -16,7 +16,6 @@ function getToken() {
             token = null;
         }
     }
-    console.log("hitting get token", token)
     return token;
 }
 
