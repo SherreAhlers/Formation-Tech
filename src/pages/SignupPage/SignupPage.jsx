@@ -86,7 +86,7 @@ class SignupPage extends Component {
           <div className="form-group" id="password">
             <label>Password</label>
             <input
-              type="current-password"
+              type="password"
               className="form-control"
               name="password"
               value={this.state.formData.password}

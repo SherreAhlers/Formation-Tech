@@ -68,7 +68,7 @@ class LoginPage extends Component {
         <div className="form-group" id="login-page-password">
           <label>Password</label>
           <input
-            type="current-password"
+            type="password"
             className="form-control"
             name="password"
             placeholder="password"

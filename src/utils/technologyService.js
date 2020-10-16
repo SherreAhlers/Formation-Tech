@@ -24,7 +24,10 @@ export function create(tech) {
   export function update(tech) {
     return fetch(`${BASE_URL}/${tech._id}`, {
       method: 'PUT',
-      headers: {'content-type': 'application/json'},
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken(),
+    },
       body: JSON.stringify(tech)
     }).then(res => res.json());
   }

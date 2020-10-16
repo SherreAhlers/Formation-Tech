@@ -14,14 +14,13 @@ app.use(express.json());
 const technologiesRouter = require('./routes/api/technologies');
 const commentsRouter = require('./routes/api/comments');
 const usersRouter = require('./routes/api/users');
-const router = require('./routes/api/comments');
 
 // app.use(cors());
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
 // Put API routes here, before the "catch all" route
-router.use(require('./config/auth'))
+app.use(require('./config/auth'))
 app.use('/api/technologies', technologiesRouter);
 app.use('/api/comments', commentsRouter);
 app.use('/api/users', usersRouter);

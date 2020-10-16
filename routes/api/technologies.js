@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const technologiesCtrl = require('../../controllers/technologies');
-router.use(require('../../config/auth'));
 
 /* GET /api/ies */
 router.get('/', checkAuth, technologiesCtrl.index);

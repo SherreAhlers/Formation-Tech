@@ -14,15 +14,6 @@ function TechnologyCommentPage(props) {
         handleAddComment={props.handleAddComment}
         technology={props.location.state.technology}
         />
-        {/* <Link
-          className='btn btn-md' id="comemnts"
-          to={{
-            pathname: '/comment-add',
-            state: {comments}
-          }}
-        >
-          ADD COMMENT
-        </Link>  */}
         </div>
         </>
     );
