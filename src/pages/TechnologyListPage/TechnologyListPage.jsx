@@ -14,10 +14,12 @@ function TechnologyListPage(props) {
         <div className="TechnologyListPage">
         <div className="container">
           <div className="card">
+            {console.log('THISSSSSSS SPOT', props.comments)}
           {props.technologies ? props.technologies.map(technology => 
             <TechnologyListItem
               owner={technology.owner}
               technology={technology}
+              comments={props.comments}
               handleDeleteTechnology={props.handleDeleteTechnology}
               key={technology._id}
             />

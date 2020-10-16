@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import '../TechnologyListItem/TechnologyListItem.css';
 
-function TechnologyListItem({technology, handleDeleteTechnology}) { 
+function TechnologyListItem({technology, handleDeleteTechnology, comments}) { 
   // if (props.owner === signed in user prop )
   // show delete button
   //else do not show delete or edit button
@@ -34,7 +34,8 @@ function TechnologyListItem({technology, handleDeleteTechnology}) {
           className='btn btn-md' id="comments-button"
           to={{
             pathname: '/comments',
-            state: {technology}
+            state: {technology, comments}
+            
           }}
         >
           COMMENTS

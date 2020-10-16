@@ -5,7 +5,7 @@ class AddCommentPage extends Component {
   state = {
     invalidForm: true,
     formData: {
-      content: ''
+      comments: ''
       // create: Date
     }
   };
@@ -43,7 +43,7 @@ class AddCommentPage extends Component {
               className="form-control"
               name="comments"
               type="text"
-              value={this.state.formData.content}
+              value={this.state.formData.comments}
               onChange={this.handleChange}
               required
             />

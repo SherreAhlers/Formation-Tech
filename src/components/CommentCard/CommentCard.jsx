@@ -4,15 +4,24 @@ import '../CommentCard/CommentCard.css';
 import AddCommentPage from '../../pages/AddCommentPage/AddCommentPage';
 
 
+
 function CommentCard(props) {
   return ( 
     <div className='panel panel-default'>
       <div className="panel-heading">
-        <h3 className='panel-title'>{ props.comments }</h3>
+        <h3 className='panel-title'>Comment</h3>
       </div>
       <div className='panel-body'>
         <dl>
-          <dd>{props.comments}</dd>
+          {props.comments.filter(c => c.technology.toString() === props.technology._id.toString()).map((comment, idx) => (
+            <dd 
+            key={idx}>
+            {comment.comments}
+            </dd> 
+          ))
+          }
+
+      {console.log('HIT HERE!!!!!!', props.comments)}
         </dl>
       </div>
       <AddCommentPage  

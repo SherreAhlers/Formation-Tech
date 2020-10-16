@@ -33,13 +33,12 @@ class App extends Component {
             (state) => ({
                 technologies: [...state.technologies, newTech]
             }),
-            () => this.props.history.push('/')
+            () => this.props.history.push("/")
         );
     };
 
     handleUpdateTechnology = async (updatedTechData) => {
         const updatedTechnology = await technologyAPI.update(updatedTechData);
-        // Using map to replace just the puppy that was updated
         const newTechnologiesArray = this.state.technologies.map((t) =>
           t._id === updatedTechnology._id ? updatedTechnology : t
         );
@@ -68,16 +67,19 @@ class App extends Component {
               (state) => ({
                   comments: [...state.comments, newComment]
               }),
-              () => this.props.history.push('/')
+              () => this.props.history.push("/")
           );
       };
 
     /*---- User Auth ---*/
-    handleSignupOrLogin = () => {
+    handleSignupOrLogin = async () => {
         this.setState({
             user: userService.getUser(),
-        });
-        this.componentDidMount();
+          });
+          if (this.state.user) {
+            const technologies = await technologyAPI.getAll();
+            this.setState({ technologies });
+          }
     };
 
     /*---- Lifecycle Methods ----*/
@@ -92,7 +94,7 @@ class App extends Component {
     handleLogout = () => {
         userService.logout();
         this.setState({ user: null });
-        this.componentDidMount();
+        
     };
 
     /*---- Callback Methods  ---*/
@@ -175,20 +177,13 @@ class App extends Component {
               userService.getUser() ?
               <TechnologyCommentPage 
               location={location} 
+              comments={this.state.comments}
+              user={this.state.user}
               handleAddComment={this.handleAddComment} 
               />
               :
               <Redirect to="/login" />
               }/>
-              {/* <Route
-              exact
-              path="/comments-add"
-              render={({ location }) =>
-              userService.getUser() ?
-              <AddCommentPage location={location} handleAddComment={this.handleAddComment} />
-              :
-              <Redirect to="/login" />
-              }/> */}
               <Route
               exact
               path="/edit"
