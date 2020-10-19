@@ -9,7 +9,6 @@ module.exports = function(req, res, next) {
         //Check if the token is valid and not expired
         jwt.verify(token, SECRET, function(err, decoded) {
             if (!err) req.user = decoded.user
-            console.log(req.user)
             return next();
         });
     } else {

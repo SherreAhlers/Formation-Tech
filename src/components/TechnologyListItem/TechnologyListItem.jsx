@@ -9,7 +9,7 @@ function TechnologyListItem({technology, handleDeleteTechnology, comments, props
         <h3 className='panel-title'>{technology.name}</h3>
       </div>
       <div className='panel-footer TechnologyListItem-action-panel'>
-      {/* {props.user.id.toString()
+      {/* {this.props.user.id.toString()
       ? */} {/* icebox item */}
       {/* <div> */}
       <Link

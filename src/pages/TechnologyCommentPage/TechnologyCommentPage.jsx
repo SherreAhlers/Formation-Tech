@@ -9,7 +9,6 @@ function TechnologyCommentPage(props) {
         <>
  <h1 className="comments-page">Comments</h1>
       <div className="card" id="comment-card">
-          {console.log('THIS SPOTTTTT', comments)}
         <CommentCard id="comments-card"
         comments={comments}
         user={props.user}

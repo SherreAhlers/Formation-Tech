@@ -20,8 +20,6 @@ function CommentCard(props) {
             </dd> 
           ))
           }
-
-      {console.log('HIT HERE!!!!!!', props.comments)}
         </dl>
       </div>
       <AddCommentPage  
