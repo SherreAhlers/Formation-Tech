@@ -15,7 +15,7 @@ function signup(user) {
             if (res.ok) return res.json();
             throw new Error('Email already taken!');
         })
-        //Parameter destructuring!
+        // Parameter destructuring!
         .then(({ token }) => {
             tokenService.setToken(token);
         })
@@ -39,8 +39,6 @@ function login(creds) {
         })
         .then((res) => {
             if (res.ok) return res.json(); 
-            // Jim says I am not returning my res.json() here ??? wtf does that mean
-            // Probably a duplicate email
             throw new Error('Bad Credentials!');
         })
         .then(({ token }) => tokenService.setToken(token));

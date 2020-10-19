@@ -15,7 +15,6 @@ const technologiesRouter = require('./routes/api/technologies');
 const commentsRouter = require('./routes/api/comments');
 const usersRouter = require('./routes/api/users');
 
-// app.use(cors());
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 

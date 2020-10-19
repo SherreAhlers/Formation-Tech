@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch, Link, NavLink, Redirect } from 'react-router-dom';
-// named exports attached to TechnologyAPI
+// Named exports attached to TechnologyAPI
 import * as technologyAPI from '../../utils/technologyService';
 import * as commentAPI from '../../utils/commentService';
 import AddTechnologyPage from '../AddTechnologyPage/AddTechnologyPage';
@@ -9,7 +9,7 @@ import EditTechnologyPage from '../EditTechnologyPage/EditTechnologyPage';
 import TechnologyDetailPage from '../TechnologyDetailPage/TechnologyDetailPage';
 import TechnologyListPage from '../TechnologyListPage/TechnologyListPage';
 import TechnologyCommentPage from '../TechnologyCommentPage/TechnologyCommentPage';
-//User sign in and login pages
+// User sign in and login pages
 import SignupPage from '../SignupPage/SignupPage';
 import '../SignupPage/SignupPage.css'
 import LoginPage from '../LoginPage/LoginPage';
@@ -53,7 +53,6 @@ class App extends Component {
         await technologyAPI.deleteOne(id);
         this.setState(
           (state) => ({
-            // Yay, filter returns a NEW array
             technologies: state.technologies.filter((t) => t._id !== id),
           }),
           () => this.props.history.push("/")

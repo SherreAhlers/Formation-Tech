@@ -2,16 +2,16 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import '../TechnologyListItem/TechnologyListItem.css';
 
-function TechnologyListItem({technology, handleDeleteTechnology, comments}) { 
-  // if (props.owner === signed in user prop )
-  // show delete button and edit button
-  //else do not show delete or edit button
+function TechnologyListItem({technology, handleDeleteTechnology, comments, props}) { 
   return (
     <div className='panel panel-default'>
       <div className="panel-heading">
         <h3 className='panel-title'>{technology.name}</h3>
       </div>
       <div className='panel-footer TechnologyListItem-action-panel'>
+      {/* {props.user.id.toString()
+      ? */} {/* icebox item */}
+      {/* <div> */}
       <Link
           className='btn btn-md' id="edit"
           to={{
@@ -30,6 +30,7 @@ function TechnologyListItem({technology, handleDeleteTechnology, comments}) {
         >
           DETAILS
         </Link> 
+        {/* </div> :""} */} {/* icebox item */}
         <Link
           className='btn btn-md' id="comments-button"
           to={{
