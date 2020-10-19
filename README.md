@@ -4,11 +4,11 @@ This application was designed for people wbo work in the oildfield industry. Mor
 
 
 ### Screen Shots
-![Landing Page] (https://i.imgur.com/mjEMCJQ.jpg)
+![Landing Page](https://i.imgur.com/mjEMCJQ.jpg)
 
-![Add Technology Page] (https://i.imgur.com/z5GkMdh.jpg)
+![Add Technology Page](https://i.imgur.com/z5GkMdh.jpg)
 
-![Technologies List Page] (https://i.imgur.com/hxpu8jK.png)
+![Technologies List Page](https://i.imgur.com/hxpu8jK.png)
 
 
 ### Technologies Used
@@ -28,9 +28,9 @@ This application was designed for people wbo work in the oildfield industry. Mor
 
 ## Getting Started
 
-[Open Formation-Tech] (https://formation-tech.herokuapp.com)
+[Open Formation-Tech](https://formation-tech.herokuapp.com)
 
-[Trello Board] (https://trello.com/b/wiLBmLct/formation-tech)
+[Trello Board](https://trello.com/b/wiLBmLct/formation-tech)
 
 
 ### Next Steps:
