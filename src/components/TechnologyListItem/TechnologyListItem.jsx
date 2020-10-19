@@ -4,7 +4,7 @@ import '../TechnologyListItem/TechnologyListItem.css';
 
 function TechnologyListItem({technology, handleDeleteTechnology, comments}) { 
   // if (props.owner === signed in user prop )
-  // show delete button
+  // show delete button and edit button
   //else do not show delete or edit button
   return (
     <div className='panel panel-default'>

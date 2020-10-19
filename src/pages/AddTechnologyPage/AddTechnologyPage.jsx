@@ -8,7 +8,7 @@ class AddTechnologyPage extends Component {
     formData: {
       name: '',
       description: '',
-      image: '',
+      // image: '', icebox item
       infoURL: ''
     }
   };
@@ -54,7 +54,7 @@ class AddTechnologyPage extends Component {
               required
             />
           </div>
-          <div className="form-group" id="add-image">
+          {/* <div className="form-group" id="add-image">
             <label>Image</label>
             <input
               className="form-control"
@@ -62,7 +62,7 @@ class AddTechnologyPage extends Component {
               value={this.state.formData.image}
               onChange={this.handleChange}
             />
-          </div>
+          </div> */} {/* icebox item */}
           <div className="form-group" id="add-url">
             <label>Resource URL</label>
             <input

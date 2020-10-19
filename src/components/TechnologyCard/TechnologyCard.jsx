@@ -13,8 +13,8 @@ function TechnologyCard({technology}) {
         <dl>
           <dt id="detail-description">Description</dt>
           <dd>{technology.description}</dd>
-          <dt id="detail-img">Image</dt>
-          <dd>{technology.image}</dd>
+          {/* <dt id="detail-img">Image</dt>
+          <dd>{technology.image}</dd> */} {/* icebox item */}
           <dt id="detail-infoURL">Information URL</dt>
           <dd>{technology.infoURL}</dd>
           <dd>{technology.comments}</dd>

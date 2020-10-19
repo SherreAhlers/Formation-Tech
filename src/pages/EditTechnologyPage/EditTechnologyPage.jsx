@@ -51,7 +51,7 @@ class EditTechnologyPage extends Component {
               required
             />
           </div>
-          <div className="form-group" id="image">
+          {/* <div className="form-group" id="image">
             <label>Image</label>
             <input
               className="form-control"
@@ -60,7 +60,7 @@ class EditTechnologyPage extends Component {
               onChange={this.handleChange}
               required
             />
-          </div>
+          </div> */}  {/* icebox item */}
           <div className="form-group" id="infoURL">
             <label>Information URL</label>
             <input

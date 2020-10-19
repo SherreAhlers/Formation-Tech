@@ -6,7 +6,6 @@ class AddCommentPage extends Component {
     invalidForm: true,
     formData: {
       comments: ''
-      // create: Date
     }
   };
 

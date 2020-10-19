@@ -62,7 +62,6 @@ class App extends Component {
 
       handleAddComment = async (newData, techId) => {
           const newComment = await commentAPI.create(newData, techId);
-          console.log('hitting in handleAddComment', newComment)
           this.setState(
               (state) => ({
                   comments: [...state.comments, newComment]
