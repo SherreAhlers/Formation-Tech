@@ -1,6 +1,6 @@
 # Formation-Tech
 
-This application was designed for people wbo work in the oildfield industry. More particularly, the people charged with water treatment and management. There are so many variations of the same technology that it is sometimes hard to know which one is the best for a particular application. With this app people can add and compare similar technologies to gain a deeper knowledge of which application would be best for a particular project.
+This application was designed for people who work in the Oildfield Industry. More particularly, the people charged with water treatment and management. There are so many variations of the same technology that it is sometimes hard to know which one is the best for a particular application. With this app people can add and compare similar technologies to gain a deeper knowledge of which application would be best for a particular project.
 
 
 ### Screen Shots
