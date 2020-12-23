@@ -3,12 +3,12 @@
     justify-content: center;
     align-items: center;
     border-style: groove;
-    background-color: lightblue;
+    background-color: white;
     width: 500px;
 }
 
 
 #add-comment-button {
-    background-color: silver;
-    color: darkblue;
+    background-color: white;
+    color: rgb(10, 10, 10);
 }

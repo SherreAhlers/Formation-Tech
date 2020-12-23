@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     border-style: groove;
-    background-color: lightblue;
+    background-color: white;
     width: 500px;
 }
 
@@ -11,4 +11,16 @@
 #add-button {
     background-color: silver;
     color: darkblue;
+}
+
+.card {
+    background-color: darkblue;
+    border-style: groove;
+    border-color: darkblue;
+    justify-content: center;
+    align-items: center;   
+}
+
+.add {
+    color: white;
 }

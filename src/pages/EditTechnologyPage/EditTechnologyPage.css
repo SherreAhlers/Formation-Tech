@@ -1,14 +1,29 @@
 #edit-form {
-    display: inline-block;    
+    display: inline-block;     
     justify-content: center;
     align-items: center;
     border-style: groove;
-    background-color: lightblue;
-    width: 500px;
+    background-color: white;
+    width: 800px;
+    height: 300px;
+    margin: 5px;
+    
 }
 
 
 #save-button {
     background-color: silver;
     color: darkblue;
+}
+
+.card {
+    background-color: darkblue;
+    border-style: groove;
+    border-color: darkblue;
+    justify-content: center;
+    align-items: center;    
+}
+
+.edit-tech {
+    color: white;
 }
